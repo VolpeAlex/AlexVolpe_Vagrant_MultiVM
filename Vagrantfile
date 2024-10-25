@@ -14,6 +14,8 @@ Vagrant.configure("2") do |config|
     subconfig.vm.hostname = VMName1
     #Provision del file provision-web.sh
     subconfig.vm.provision "shell", path: "provision-web.sh"
+    #Provision del file provision-creazione_db.sh
+    subconfig.vm.provision "shell", path: "provision-creazione_db.sh"
     #Configurazione di rete per la scheda Intnet
 	  subconfig.vm.network "private_network", ip:"#{BASE_INT_NETWORK}.10", virtualbox__intnet: true
 	  #Configurazione di rete per la scheda HO
@@ -34,7 +36,7 @@ Vagrant.configure("2") do |config|
     #Provision del file provision-database.sh
     subconfig.vm.provision "shell", path: "provision-database.sh"
     #Configurazione di rete per la scheda Intnet
-	  subconfig.vm.network "private_network", ip:"#{BASE_INT_NETWORK}.11", virtualbox__intnet: true
+	subconfig.vm.network "private_network", ip:"#{BASE_INT_NETWORK}.11", virtualbox__intnet: true
     #Subconig della vm db
     subconfig.vm.provider "virtualbox" do |vb|
 		  vb.name = VMName2
